@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1017671429220",
+    "firebase_url": "https://smartstickapp3firebase.firebaseio.com",
+    "project_id": "smartstickapp3firebase",
+    "storage_bucket": "smartstickapp3firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017671429220:android:edca5c69d71fac2f05c371",
+        "android_client_info": {
+          "package_name": "com.example.smartstickapp3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017671429220-db5kufb6tuje09lsj99i49sks4cm5k4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6Ddgwi8fFdn9XSf20zi0oGVbw6rv8_hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017671429220-db5kufb6tuje09lsj99i49sks4cm5k4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
