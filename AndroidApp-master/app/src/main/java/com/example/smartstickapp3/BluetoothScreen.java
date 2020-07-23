@@ -1,6 +1,7 @@
 package com.example.smartstickapp3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import android.bluetooth.BluetoothAdapter;
@@ -31,6 +32,17 @@ public class BluetoothScreen extends AppCompatActivity implements FragmentManage
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth_screen);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Register");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BluetoothScreen.this,MainActivity.class));
+            }
+        });
 
         myBluetooth = BluetoothAdapter.getDefaultAdapter();//bulunulan cihazın bluetooth özelliğini olup olmadığını kontrol eder.
         toggle_button = (Button) findViewById(R.id.login_button);

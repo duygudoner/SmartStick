@@ -91,7 +91,7 @@
             android:layout_width="250dp"
             android:layout_height="48dp"
             android:layout_marginTop="18dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/custom_button"
             android:text="Login"
             android:textAlignment="center"
@@ -101,9 +101,10 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/login_need_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/login_need_account"
+            android:layout_marginBottom="16dp"
             android:text="Yeni Hesap Oluştur"
             android:textStyle="bold" />
 
