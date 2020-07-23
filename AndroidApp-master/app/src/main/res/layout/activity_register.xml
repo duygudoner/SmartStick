@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+
     <LinearLayout
         android:id="@+id/linearLayout_imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginBottom="8dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -39,8 +40,8 @@
         android:id="@+id/linearLayout_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -119,10 +120,10 @@
             android:textSize="14dp"></EditText>
 
         <Button
-            android:layout_marginTop="18dp"
             android:id="@+id/register_button"
             android:layout_width="250dp"
             android:layout_height="48dp"
+            android:layout_marginTop="18dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/custom_button"
             android:text="Kaydet"
@@ -138,6 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:text="Zaten bir hesabınız var mı? Giriş yapınız."
             android:textStyle="bold" />
     </LinearLayout>
