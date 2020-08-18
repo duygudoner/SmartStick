@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddActivity">
+    tools:context=".AddActivity"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:id="@+id/linearLayout_imageView"
@@ -100,10 +101,10 @@
             android:textSize="14dp"></EditText>
 
         <Button
-            android:layout_marginTop="18dp"
             android:id="@+id/btnKaydet"
             android:layout_width="250dp"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="18dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/custom_button"
             android:text="Bitkiyi Kaydet"

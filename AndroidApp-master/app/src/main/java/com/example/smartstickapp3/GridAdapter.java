@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,16 +18,16 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHolder> implements Filterable {
+public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PlantViewHolder> implements Filterable {
 
     Context context;
-    List<PlantItem> mData;
-    List<PlantItem> mDataFiltered;
+    List<UserPlants> pData;
+    List<UserPlants> pDataFiltered;
 
-    public PlantAdapter(Context context, List<PlantItem> mData) {
+    public GridAdapter(Context context, List<UserPlants> pData) {
         this.context = context;
-        this.mData = mData;
-        this.mDataFiltered = mData;
+        this.pData = pData;
+        this.pDataFiltered = pData;
     }
 
     @NonNull
@@ -38,18 +39,17 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
 
     @Override
     public void onBindViewHolder(@NonNull PlantViewHolder holder, int position) {
-        holder.img_logo.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_transition_animation));
         holder.relativeLayout.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
 
         // bind data here
-        holder.tv_tittle.setText(mDataFiltered.get(position).getTitle());
-        holder.tv_context.setText(mDataFiltered.get(position).getContex());
-        holder.img_logo.setImageResource(mDataFiltered.get(position).getIc_logo());
+        holder.plantname.setText(pDataFiltered.get(position).getPlantName());
+        holder.plantage.setText(pDataFiltered.get(position).getPlantAge());
+        holder.planttype.setText(pDataFiltered.get(position).getPlantType());
     }
 
     @Override
     public int getItemCount() {
-        return mDataFiltered.size();
+        return pDataFiltered.size();
     }
 
     @Override
@@ -60,41 +60,40 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
             protected FilterResults performFiltering(CharSequence constraint) {
                 String Key = constraint.toString();
                 if(Key.isEmpty()){
-                    mDataFiltered = mData;
+                    pDataFiltered = pData;
                 }
                 else{
-                    List<PlantItem> lstFiltered = new ArrayList<>();
-                    for (PlantItem row : mData){
-                        if(row.getTitle().toLowerCase().contains(Key.toLowerCase())){
+                    List<UserPlants> lstFiltered = new ArrayList<>();
+                    for (UserPlants row : pData){
+                        if(row.getPlantName().toLowerCase().contains(Key.toLowerCase())){
                             lstFiltered.add(row);
                         }
                     }
-                    mDataFiltered = lstFiltered;
+                    pDataFiltered = lstFiltered;
                 }
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = mDataFiltered;
+                filterResults.values = pDataFiltered;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
 
-                mDataFiltered = (List<PlantItem>) results.values;
+                pDataFiltered = (List<UserPlants>) results.values;
                 notifyDataSetChanged();
             }
         };
     }
 
     public class PlantViewHolder extends RecyclerView.ViewHolder{
-        TextView tv_tittle, tv_context;
-        ImageView img_logo;
+        TextView plantname,plantage,planttype;
         RelativeLayout relativeLayout;
 
         public PlantViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_tittle = itemView.findViewById(R.id.tv_tittle);
+            /*tv_tittle = itemView.findViewById(R.id.tv_tittle);
             tv_context = itemView.findViewById(R.id.tv_content);
-            img_logo = itemView.findViewById(R.id.imgV_ic_flower);
+            img_logo = itemView.findViewById(R.id.imgV_ic_flower);*/
             relativeLayout = itemView.findViewById(R.id.relative_layout);
 
         }

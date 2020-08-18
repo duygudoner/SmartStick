@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wbackground3"
+    android:background="@drawable/background"
     tools:context=".BluetoothScreen">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/activity_toolbar" />
 
-
     <Button
         android:id="@+id/login_button"
         android:layout_width="250dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/custom_button"
         android:text="@string/bluetooth"
@@ -31,7 +30,7 @@
     <Button
         android:id="@+id/btnCihazListele"
         android:layout_width="250dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/custom_button"
         android:text="@string/cihazlari_listele"
@@ -44,18 +43,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="@string/bluetoothunuzu_aktif_hale_getirin"
-        android:textAlignment="center"
-        android:textSize="22sp"
+    <ListView
+        android:id="@+id/lvCihazListele"
+        style="@style/Widget.AppCompat.ListView"
+        android:layout_width="271dp"
+        android:layout_height="280dp"
+        android:layout_below="@+id/btnCihazListele"
+        android:layout_alignStart="@+id/btnCihazListele"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_toEndOf="@+id/btnCihazListele"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCihazListele"
+        app:layout_constraintVertical_bias="0.285"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_nature"
+        android:drawablePadding="24dp"
+        android:ems="10"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColorHint="@color/colorSecondaryDark"
+        android:textSize="14dp"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -70,21 +81,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
-    <ListView
-        android:id="@+id/lvCihazListele"
-        android:layout_width="271dp"
-        android:layout_height="280dp"
-        android:layout_below="@+id/btnCihazListele"
-        android:layout_alignStart="@+id/btnCihazListele"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_toEndOf="@+id/btnCihazListele"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="@string/bluetoothunuzu_aktif_hale_getirin"
+        android:textAlignment="center"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintHorizontal_bias="0.406"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCihazListele"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

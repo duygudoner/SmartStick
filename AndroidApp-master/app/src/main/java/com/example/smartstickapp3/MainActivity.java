@@ -26,16 +26,7 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    String address = null;
-    private ProgressDialog progress;
     BluetoothAdapter myBluetooth = null;
-    BluetoothSocket btSocket = null;
-    BluetoothDevice remoteDevice;
-    BluetoothServerSocket nmserver;
-    private boolean isBtConnected = false;
-    static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-
-
     Toolbar toolbar;
     private CardView addCard, showCard, searchCard;
 
@@ -43,82 +34,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myBluetooth = BluetoothAdapter.getDefaultAdapter();
-        Intent newInt = getIntent();
-        address = newInt.getStringExtra(BluetoothScreen.EXTRA_ADRESS);
 
+        myBluetooth = BluetoothAdapter.getDefaultAdapter();
         setUpToolBar();
         setUpDrawer();
         setUpCardView();
 
-        // Bluetootg bağlantı kontrol edilirken sürekli beklememek
-        // Test işlemlerini hızlandırmak için bluetooth kontrol bağlantı kısmı yoruma alındı.
-        //new BTbaglan().execute();
-
     }
-
-    // ------------------------------------  Bluetooth bağlantı kısmı ---------------------------------------
-
-   /* private void Disconnect() {
-        if (btSocket != null) {
-            try {
-                btSocket.close();
-            } catch (IOException e) {
-                //msg("Error");
-            }
-        }
-        finish();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Disconnect();
-    }
-
-    private class BTbaglan extends AsyncTask<Void, Void, Void> {
-        private boolean ConnectSuccess = true;
-
-        @Override
-        protected void onPreExecute() {
-            progress = ProgressDialog.show(MainActivity.this, "Bağlanıyor...", "Lütfen Bekleyin");
-        }
-
-        @Override
-        protected Void doInBackground(Void... devices) {
-            try {
-                if (btSocket == null || !isBtConnected) {
-                    myBluetooth = BluetoothAdapter.getDefaultAdapter();
-                    BluetoothDevice cihaz = myBluetooth.getRemoteDevice(address);
-                    btSocket = cihaz.createInsecureRfcommSocketToServiceRecord(myUUID);
-                    BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
-                    btSocket.connect();
-                }
-            } catch (IOException e) {
-                ConnectSuccess = false;
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-            if (!ConnectSuccess) {
-                //msg("Baglantı hatası, lütfen tekrar deneyin");
-                Toast.makeText(getApplicationContext(), "Bağlantı Hatası Tekrar Deneyin", Toast.LENGTH_SHORT).show();
-                //finish();
-                // şimdilik bu kısmı yoruma aldım yoksa uygulama sonlanıyor diğer ekranları yapamıyorum.
-            } else {
-                //   msg("Baglantı Basarılı");
-                Toast.makeText(getApplicationContext(), "Bağlantı Başarılı", Toast.LENGTH_SHORT).show();
-
-                isBtConnected = true;
-            }
-            progress.dismiss();
-        }
-    }
-    */
-
 
     // ------------------------------------  cardView kısmı ---------------------------------------
 

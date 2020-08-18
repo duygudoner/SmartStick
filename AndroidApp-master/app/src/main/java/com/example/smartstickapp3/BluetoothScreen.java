@@ -35,14 +35,14 @@ public class BluetoothScreen extends AppCompatActivity implements FragmentManage
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Register");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Bluetooth Bağlantısı");
+        /*getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(BluetoothScreen.this,MainActivity.class));
+                startActivity(new Intent(BluetoothScreen.this,ShowActivity.class));
             }
-        });
+        });*/
 
         myBluetooth = BluetoothAdapter.getDefaultAdapter();//bulunulan cihazın bluetooth özelliğini olup olmadığını kontrol eder.
         toggle_button = (Button) findViewById(R.id.login_button);
@@ -101,12 +101,12 @@ public class BluetoothScreen extends AppCompatActivity implements FragmentManage
             String info = ((TextView) view).getText().toString();
             String address = info.substring(info.length() - 17);
 
-            /*Intent comIntent = new Intent(BluetoothScreen.this, MainActivity.class);
+            Intent comIntent = new Intent(BluetoothScreen.this, MyCurrentPlantActivity.class);
             comIntent.putExtra(EXTRA_ADRESS, address);
-            startActivity(comIntent);*/
+            startActivity(comIntent);
 
-            // finish ile bluetooth eşleştirme aktivitesini bitirmezsek geri bu aktiviteye gelebilir.
-            finish();
+            //finish ile bluetooth eşleştirme aktivitesini bitirmezsek geri bu aktiviteye gelebilir.
+            //finish();
         }
     };
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:id="@+id/linearLayout_imageView"
@@ -89,11 +90,11 @@
         <Button
             android:id="@+id/login_button"
             android:layout_width="250dp"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginTop="18dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/custom_button"
-            android:text="Login"
+            android:text="Giriş Yap"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
@@ -102,10 +103,17 @@
 
         <TextView
             android:id="@+id/login_need_account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_button"
+            android:gravity="center_vertical"
             android:text="Yeni Hesap Oluştur"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 

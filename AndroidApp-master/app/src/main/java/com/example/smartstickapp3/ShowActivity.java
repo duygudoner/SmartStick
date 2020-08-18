@@ -16,15 +16,24 @@ public class ShowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
 
-        Button vericek;
-        vericek=(Button) findViewById(R.id.data);
+        Button veriCek;
+        Button veriGörüntüle;
+        veriCek=(Button) findViewById(R.id.data);
+        veriGörüntüle= (Button) findViewById(R.id.data2);
 
-        vericek.setOnClickListener(new View.OnClickListener() {
+        veriCek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(ShowActivity.this,BluetoothScreen.class);
                 startActivity(i);
-                finish();
+            }
+        });
+
+        veriGörüntüle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(ShowActivity.this,UserPlantsActivity.class);
+                startActivity(i);
             }
         });
 
