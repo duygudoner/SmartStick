@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:layout_margin="32dp"
+            app:cardCornerRadius="64dp"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tree_01" />
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_imageView"
+        app:layout_constraintVertical_bias="0.0">
+
+        <EditText
+            android:id="@+id/edt_bitki_ad"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_nature"
+            android:drawablePadding="24dp"
+            android:ems="10"
+            android:hint="Bitki adını girin:"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColorHint="@color/colorSecondaryDark"
+            android:textSize="14dp"></EditText>
+
+        <EditText
+            android:id="@+id/edt_bitki_yas"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_nature"
+            android:drawablePadding="24dp"
+            android:ems="10"
+            android:hint="Bitkinin yaşını girin:"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColorHint="@color/colorSecondaryDark"
+            android:textSize="14dp"></EditText>
+
+        <EditText
+            android:id="@+id/edt_bitki_tur"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_nature"
+            android:drawablePadding="24dp"
+            android:ems="10"
+            android:hint="Bitki türünü girin:"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColorHint="@color/colorSecondaryDark"
+            android:textSize="14dp"></EditText>
+
+        <Button
+            android:id="@+id/btnKaydet"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/custom_button"
+            android:text="Bitkiyi Kaydet"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
