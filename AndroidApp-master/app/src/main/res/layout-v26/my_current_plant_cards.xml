@@ -24,29 +24,29 @@
 
             <TextView
                 android:id="@+id/textViewData"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:hint="Değer Türü"
                 android:textAlignment="center"
-                android:textSize="24sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textViewDeger"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
                 android:hint="Değer"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <SeekBar
                 android:id="@+id/seek_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_height="19dp"
+                android:layout_marginBottom="8dp"
                 android:max="100"
                 android:min="0"
                 android:progress="20"

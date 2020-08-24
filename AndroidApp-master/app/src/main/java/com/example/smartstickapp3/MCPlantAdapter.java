@@ -7,68 +7,74 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MCPlantAdapter extends RecyclerView.Adapter<MCPlantAdapter.MyViewHolder> {
+public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<SensorItem> mDataList;
+    private List<Object> list;
+    private Context context;
+    private final static int tip_firebase =0, tip_sensor=1;
+    //ArrayList<FirebaseItem> mFirebaseDataList;
+    //ArrayList<SensorItem> mSensorDataList;
     LayoutInflater inflater, inflater2;
 
-    public MCPlantAdapter(Context context, ArrayList<SensorItem> data){
+    public MCPlantAdapter(Context context, List<Object> list){
         inflater = LayoutInflater.from(context);
-        this.mDataList = data;
+        this.list=list;
+        this.context=context;
     }
 
-    public MCPlantAdapter(Runnable runnable, ArrayList<SensorItem> data2){
-        inflater2 = LayoutInflater.from((Context) runnable);
-        this.mDataList = data2;
-    }
+    /*@Override
+    public int getItemViewType(int position) {
+
+        List içerisindeki gelen tipi yakalayabileceğimiz metot
+
+        if (list.get(position) instanceof FirebaseItem) { // Tipler eşit ise true döner
+            return tip_firebase;
+        } else if (list.get(position) instanceof SensorItem) {
+            return tip_sensor;
+        }
+        return -1;
+    }*/
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // xml den java dönüştürmek istediğimiz layoutu veriyoruz.
-        switch (viewType) {
-            case 0:
-                View v = inflater.inflate(R.layout.my_current_plant_cards, parent, false);
-                MyViewHolder holder = new MyViewHolder(v);
-                return holder;
-            case 1:
-                View v2 = inflater2.inflate(R.layout.my_current_plant_cards, parent, false);
-                MyViewHolder holder2 = new MyViewHolder(v2);
-                return holder2;
-        }
-        return null;
+        RecyclerView.ViewHolder viewHolder;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_current_plant_cards, parent, false);
+        viewHolder = new FirebaseViewHolder(v);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         // Tıklanan öğeler SensorItem class tipinde nesnedir.
-        SensorItem tiklanilanSensorItem = mDataList.get(position);
-        holder.setData(tiklanilanSensorItem,position);
-
+        int viewType = holder.getItemViewType();
+        SensorItem firebaseItem = (SensorItem)list.get(position);
+        ((FirebaseViewHolder)holder).setData(firebaseItem,position);
     }
 
     @Override
     public int getItemCount() {
-        return mDataList.size();
+        return list.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    public class FirebaseViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewDeger;
         TextView mTextViewData;
+        TextView textViewDeger;
         SeekBar mSeekbar;
 
+        String currentValue=null;
         int minValue=0;
         int maxValue=0;
-        int currentValue=0;
         int optimumValue=0;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public FirebaseViewHolder(@NonNull View itemView) {
             super(itemView);
             mTextViewData = itemView.findViewById(R.id.textViewData);
             mSeekbar = itemView.findViewById(R.id.seek_bar);
@@ -81,4 +87,6 @@ public class MCPlantAdapter extends RecyclerView.Adapter<MCPlantAdapter.MyViewHo
             //.................
         }
     }
+
+
 }
