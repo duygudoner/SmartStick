@@ -50,19 +50,19 @@ public class MyAdaptor extends RecyclerView.Adapter<MyAdaptor.MyViewHolder> {
         return mDataList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView baslik;
         ImageView resim;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
             baslik = itemView.findViewById(R.id.title);
             resim = itemView.findViewById(R.id.ImgIcon);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    Toast.makeText(context,baslik.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(itemView.getContext(),baslik.getText().toString(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

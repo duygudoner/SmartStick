@@ -84,7 +84,7 @@
             android:textSize="14dp"></EditText>
 
         <EditText
-            android:id="@+id/edt_bitki_tur"
+            android:id="@+id/edt_bitki_sulama_gun"
             android:layout_width="350dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
@@ -94,7 +94,7 @@
             android:drawableStart="@drawable/ic_nature"
             android:drawablePadding="24dp"
             android:ems="10"
-            android:hint="Bitki türünü girin:"
+            android:hint="Bitki sulama sıklığını gün bazında girin:"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:textColorHint="@color/colorSecondaryDark"

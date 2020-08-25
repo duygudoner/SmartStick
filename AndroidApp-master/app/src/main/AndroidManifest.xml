@@ -9,7 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MyCurrentPlantActivity"></activity>
-        <activity android:name=".deneme" />
         <activity android:name=".UserPlantsActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />

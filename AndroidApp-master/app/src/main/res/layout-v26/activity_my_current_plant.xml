@@ -6,10 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    android:padding="32dp"
+    android:paddingTop="24dp"
     tools:context=".MyCurrentPlantActivity">
-
-
     <!--       >
 
     <android.support.v7.widget.RecyclerView
@@ -18,6 +16,7 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
     -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +26,8 @@
         <Button
             android:id="@+id/sulama"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/custom_button"
             android:drawableStart="@drawable/ic_wateringcan04"
@@ -40,23 +40,23 @@
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
-
         <Button
             android:id="@+id/guncelle"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"
             android:drawableStart="@drawable/ic_refresh03"
             android:paddingStart="4dp"
             android:paddingEnd="8dp"
             android:background="@drawable/custom_button"
             android:onClick="beginListenForData"
-            android:text="Güncelle"
             android:textAlignment="center"
             android:textAllCaps="false"
+            android:text="Güncelle"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/textView3"
@@ -66,7 +66,7 @@
             android:drawableStart="@drawable/ic_flower"
             android:text="Bitkim"
             android:textColor="#3E7C5E"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="normal" />
     </LinearLayout>
 
