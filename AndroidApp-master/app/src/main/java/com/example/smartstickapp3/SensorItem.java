@@ -1,8 +1,5 @@
 package com.example.smartstickapp3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 // MyCurrentPlantActivity' de yer alacak olan recyclerview için class tanımlaması yapıyoruz.
 public class SensorItem {
 
@@ -21,13 +18,9 @@ public class SensorItem {
         this.s_bar_optimum = s_bar_optimum;
     }
 
-    public String  getS_bar_current() {
-        return s_bar_current;
-    }
+    public String getS_bar_current() { return s_bar_current; }
 
-    public void setS_bar_current(String s_bar_current) {
-        this.s_bar_current = s_bar_current;
-    }
+    public void setS_bar_current(String s_bar_current) { this.s_bar_current = s_bar_current; }
 
     public int getS_bar_optimum() {
         return s_bar_optimum;
@@ -65,7 +58,7 @@ public class SensorItem {
     // public static method sayesınde classtan nesne oluşturmadan çağırıyoruz.
     // Class tipinde (SensorItem) Arraylist oluşturuyoruz.
 
-    public static List<SensorItem> getData(){
+    /*public static List<SensorItem> getData(){
         ArrayList<SensorItem> dataList = new ArrayList<SensorItem>();
 
         int [] degerler  = {0,1000};
@@ -105,7 +98,7 @@ public class SensorItem {
         gecici.setS_bar_max(degerler[1]);
 
         gecici.setS_bar_current(currentValue);
-        gecici.setS_bar_optimum(optimumValue);*/
+        gecici.setS_bar_optimum(optimumValue);
 
         dataList.add(ortamNemi);
         dataList.add(isikSiddeti);
@@ -113,5 +106,5 @@ public class SensorItem {
         dataList.add(toprakNemi);
 
         return dataList;
-    }
+    }*/
 }

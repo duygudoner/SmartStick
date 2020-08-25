@@ -1,15 +1,20 @@
 package com.example.smartstickapp3;
 
 import android.content.Context;
+import android.os.Build;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -50,6 +55,7 @@ public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return viewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         // Tıklanan öğeler SensorItem class tipinde nesnedir.
@@ -67,7 +73,7 @@ public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         TextView mTextViewData;
         TextView textViewDeger;
-        SeekBar mSeekbar;
+        ProgressBar mProgressbar;
 
         String currentValue=null;
         int minValue=0;
@@ -77,14 +83,17 @@ public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public FirebaseViewHolder(@NonNull View itemView) {
             super(itemView);
             mTextViewData = itemView.findViewById(R.id.textViewData);
-            mSeekbar = itemView.findViewById(R.id.seek_bar);
+            mProgressbar = itemView.findViewById(R.id.progressBar);
             textViewDeger = itemView.findViewById(R.id.textViewDeger);
         }
 
-        public void setData(SensorItem tiklanilanSensorItem, int position) {
-            this.mTextViewData.setText(tiklanilanSensorItem.getBitkiVeriTur());
-            this.textViewDeger.setText(tiklanilanSensorItem.getS_bar_current());
-            //.................
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        public void setData(SensorItem item, int position) {
+            this.mTextViewData.setText(item.getBitkiVeriTur());
+            this.textViewDeger.setText(item.getS_bar_current());
+            this.mProgressbar.setMax(item.getS_bar_max());
+            //this.mProgressbar.setProgress(Integer.parseInt(String.valueOf(this.textViewDeger)));
+
         }
     }
 

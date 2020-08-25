@@ -101,7 +101,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
+        <Button
             android:id="@+id/login_need_account"
             android:layout_width="250dp"
             android:layout_height="50dp"

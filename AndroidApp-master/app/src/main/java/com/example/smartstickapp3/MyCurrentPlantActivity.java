@@ -1,10 +1,12 @@
 package com.example.smartstickapp3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
@@ -13,9 +15,13 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +59,6 @@ public class MyCurrentPlantActivity extends AppCompatActivity {
     String[] datarr = new String[4];
     public String modulData=null;
     RecyclerView recyclerView;
-    Button button;
     MCPlantAdapter adapter;
     List<Object> objects;
     TextView deger;
@@ -68,41 +73,44 @@ public class MyCurrentPlantActivity extends AppCompatActivity {
         address = newInt.getStringExtra(BluetoothScreen.EXTRA_ADRESS);
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         deger = (TextView) findViewById(R.id.textViewDeger);
-        //button = findViewById(R.id.guncelle);
 
         objects = new ArrayList<>();
-        objects.add(new SensorItem("Ortam Nemi" , "Değer" , 0 , 100 , 50 ));
-        objects.add(new SensorItem("Işık Şiddeti" , "Değer", 0 , 1000, 500));
-        objects.add(new SensorItem("Sıcaklık" , "Değer" , 0 , 100 , 30));
-        objects.add(new SensorItem("Toprak Nemi" , "Değer" , 0 , 1000 , 500));
+        objects.add(new SensorItem("Ortam Nemi" , "0" , 0 , 100 , 50 ));
+        objects.add(new SensorItem("Işık Şiddeti" , "0" , 0 , 1000, 500));
+        objects.add(new SensorItem("Sıcaklık" , "0" , 0 , 100 , 30));
+        objects.add(new SensorItem("Toprak Nemi" , "0" , 0 , 1000 , 500));
 
         adapter = new MCPlantAdapter(getApplicationContext(), objects);
+
+        // CHANGE LINEAR LAYOUT TO GRID LAYOUT
+        /*
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setAdapter(adapter);
+        */
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
 
         // Bluetootg bağlantı kontrol edilirken sürekli beklememek
         // Test işlemlerini hızlandırmak için bluetooth kontrol bağlantı kısmı yoruma alındı.
         new MyCurrentPlantActivity.BTbaglan().execute();
-
-
     }
 
-    /*private void writeData(String data) {
+    public void writeData(View view) {
         try {
             this.outStream = this.btSocket.getOutputStream();
         } catch (IOException var6) {
             Log.d("Jon", "Bug BEFORE Sending stuff", var6);
         }
-
-        byte[] msgBuffer = data.getBytes();
-
         try {
-            this.outStream.write(msgBuffer);
+            byte [] data = ("a").getBytes();
+            this.outStream.write(data);
         } catch (IOException var5) {
             Log.d("Jon", "Bug while sending stuff", var5);
         }
 
-    }*/
+    }
 
     protected void onDestroy() {
         super.onDestroy();
@@ -191,32 +199,32 @@ public class MyCurrentPlantActivity extends AppCompatActivity {
                                             //txtview.setText(data);
                                             modulData=data;
                                             String[] dataLines = modulData.split(" ");
-                                            int dataLineCount = dataLines.length;
+                                            //int dataLineCount = dataStringLines.length;
 
                                             SensorItem sensor1= new SensorItem();
                                             sensor1.setBitkiVeriTur("Ortam Nemi");
-                                            sensor1.setS_bar_current(dataLines[0]);
+                                            sensor1.setS_bar_current("%"+dataLines[0]);
                                             sensor1.setS_bar_min(0);
                                             sensor1.setS_bar_max(100);
                                             sensor1.setS_bar_optimum(50);
 
                                             SensorItem sensor2 = new SensorItem();
                                             sensor2.setBitkiVeriTur("Işık Şiddeti");
-                                            sensor2.setS_bar_current(dataLines[1]);
+                                            sensor2.setS_bar_current(String.format("%%%d", Integer.parseInt(dataLines[1]) / 10));
                                             sensor2.setS_bar_min(0);
-                                            sensor2.setS_bar_max(100);
-                                            sensor2.setS_bar_optimum(30);
+                                            sensor2.setS_bar_max(1000);
+                                            sensor2.setS_bar_optimum(500);
 
                                             SensorItem sensor3 = new SensorItem();
                                             sensor3.setBitkiVeriTur("Sıcaklık");
-                                            sensor3.setS_bar_current(dataLines[2]);
+                                            sensor3.setS_bar_current("%"+dataLines[2]);
                                             sensor3.setS_bar_min(0);
-                                            sensor3.setS_bar_max(1000);
-                                            sensor3.setS_bar_optimum(500);
+                                            sensor3.setS_bar_max(100);
+                                            sensor3.setS_bar_optimum(30);
 
                                             SensorItem sensor4 = new SensorItem();
                                             sensor4.setBitkiVeriTur("Toprak Nemi");
-                                            sensor4.setS_bar_current(dataLines[3]);
+                                            sensor4.setS_bar_current(String.format("%%%d", Integer.parseInt(dataLines[3])/10));
                                             sensor4.setS_bar_min(0);
                                             sensor4.setS_bar_max(1000);
                                             sensor4.setS_bar_optimum(700);
@@ -227,7 +235,12 @@ public class MyCurrentPlantActivity extends AppCompatActivity {
                                             objects.set(3, sensor4);
 
                                             adapter = new MCPlantAdapter(getApplicationContext(), objects);
-                                            recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                                            //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                                            //recyclerView.setAdapter(adapter);
+
+                                            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2,GridLayoutManager.VERTICAL,false);
+                                            recyclerView.setLayoutManager(gridLayoutManager);
                                             recyclerView.setAdapter(adapter);
                                         }
                                     });
