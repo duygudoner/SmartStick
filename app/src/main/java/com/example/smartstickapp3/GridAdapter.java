@@ -44,7 +44,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.PlantViewHolde
         // bind data here
         holder.plantname.setText(pDataFiltered.get(position).getPlantName());
         holder.plantage.setText(pDataFiltered.get(position).getPlantAge());
-        holder.planttype.setText(pDataFiltered.get(position).getPlantType());
+        holder.planttype.setText(pDataFiltered.get(position).getPlantWaterDay());
     }
 
     @Override

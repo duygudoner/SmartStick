@@ -23,9 +23,25 @@
         android:gravity="center"
         android:orientation="vertical">
         <Button
+            android:id="@+id/sulama"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_button"
+            android:drawableStart="@drawable/ic_wateringcan04"
+            android:paddingStart="4dp"
+            android:paddingEnd="8dp"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:text="Sulama"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <Button
             android:id="@+id/guncelle"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"
             android:drawableStart="@drawable/ic_refresh03"
@@ -39,22 +55,7 @@
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold"/>
-        <Button
-            android:id="@+id/sulama"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/custom_button"
-            android:drawableStart="@drawable/ic_wateringcan04"
-            android:paddingStart="4dp"
-            android:paddingEnd="8dp"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:text="Sulama"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"

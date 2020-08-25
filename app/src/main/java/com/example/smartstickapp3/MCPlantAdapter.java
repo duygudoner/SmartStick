@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -14,7 +15,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
     private List<Object> list;
     private Context context;
@@ -22,6 +23,7 @@ public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     //ArrayList<FirebaseItem> mFirebaseDataList;
     //ArrayList<SensorItem> mSensorDataList;
     LayoutInflater inflater, inflater2;
+    Button button;
 
     public MCPlantAdapter(Context context, List<Object> list){
         inflater = LayoutInflater.from(context);
@@ -65,6 +67,7 @@ public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return list.size();
     }
 
+
     public class FirebaseViewHolder extends RecyclerView.ViewHolder {
 
         TextView mTextViewData;
@@ -78,8 +81,6 @@ public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         private TextView txtProgress;
         private ProgressBar progressBar;
-        private int pStatus = 0;
-        private Handler handler = new Handler();
 
         public FirebaseViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,15 +91,12 @@ public class MCPlantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             txtProgress = (TextView) itemView.findViewById(R.id.textViewData);
             progressBar = (ProgressBar) itemView.findViewById(R.id.progressBar);
-
         }
 
         public void setData(SensorItem tiklanilanSensorItem, int position) {
             this.mTextViewData.setText(tiklanilanSensorItem.getBitkiVeriTur());
             this.textViewDeger.setText(tiklanilanSensorItem.getS_bar_current());
             //.................
-
-
         }
     }
 

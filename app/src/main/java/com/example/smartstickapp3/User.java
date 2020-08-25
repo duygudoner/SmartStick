@@ -2,9 +2,7 @@ package com.example.smartstickapp3;
 
 public class User {
     String Name,Passw,Email;
-    public User(){
-
-    }
+    public User(){ }
 
     public User(String name, String passw, String email) {
         Name=name;

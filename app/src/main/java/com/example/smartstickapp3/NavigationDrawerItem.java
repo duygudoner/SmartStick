@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class NavigationDrawerItem {
 
     String baslik ;
+    String id;
     int resimID;
 
     public String getBaslik() {
@@ -13,6 +14,14 @@ public class NavigationDrawerItem {
 
     public int getResimID() {
         return resimID;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setBaslik(String baslik) {
@@ -28,9 +37,11 @@ public class NavigationDrawerItem {
         ArrayList<NavigationDrawerItem> dataList = new ArrayList<NavigationDrawerItem>();
         int[] resimID = getImages();
         String[] basliklar = getBasliklar();
+        String [] idler = getID();
 
         for (int i=0 ; i<basliklar.length ; i++){
             NavigationDrawerItem navItem = new NavigationDrawerItem();
+            navItem.setId(idler[i]);
             navItem.setBaslik(basliklar[i]);
             navItem.setResimID(resimID[i]);
 
@@ -47,9 +58,13 @@ public class NavigationDrawerItem {
     }
 
     private static String[] getBasliklar() {
-
         return new String[]{
                 "Bitki Ekle","Bitki Göster","Bitki Ara","Hakkında"
+        };
+    }
+    private static String[] getID() {
+        return new String[]{
+                "id_bitki_ekle","id_bitki_göster","id_bitki_ara","id_hakkında"
         };
     }
 

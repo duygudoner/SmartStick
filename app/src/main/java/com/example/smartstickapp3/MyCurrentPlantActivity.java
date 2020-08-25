@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +55,7 @@ public class MyCurrentPlantActivity extends AppCompatActivity {
     public Thread workerThread;
     String[] datarr = new String[4];
     public String modulData=null;
+
     RecyclerView recyclerView;
     Button button;
     MCPlantAdapter adapter;
@@ -266,7 +268,6 @@ public class MyCurrentPlantActivity extends AppCompatActivity {
 
         workerThread.start();
     }
-
 
     // ------------------------------------  Bluetooth bağlantı kısmı ---------------------------------------
 

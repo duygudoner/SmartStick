@@ -10,14 +10,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.smartstickapp3.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,7 +23,7 @@ public class AddActivity extends AppCompatActivity {
 
     private EditText bitkiAdi;
     private EditText bitkiYas;
-    private EditText bitkiTur;
+    private EditText bitkiSulamaGun;
     private Button bitkiKaydet;
     private ProgressDialog registerProgress;
     private FirebaseAuth mAuth;
@@ -40,7 +36,7 @@ public class AddActivity extends AppCompatActivity {
 
         bitkiAdi= (EditText) findViewById(R.id.edt_bitki_ad);
         bitkiYas= (EditText) findViewById(R.id.edt_bitki_yas);
-        bitkiTur= (EditText) findViewById(R.id.edt_bitki_tur);
+        bitkiSulamaGun = (EditText) findViewById(R.id.edt_bitki_sulama_gun);
         bitkiKaydet= (Button) findViewById(R.id.btnKaydet);
         registerProgress=new ProgressDialog(this);
         mAuth= FirebaseAuth.getInstance();
@@ -50,7 +46,7 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String plantname=bitkiAdi.getText().toString();
                 String plantage=bitkiYas.getText().toString();
-                String planttype=bitkiTur.getText().toString();
+                String planttype= bitkiSulamaGun.getText().toString();
 
                 if(!TextUtils.isEmpty(plantname) || !TextUtils.isEmpty(plantage) || !TextUtils.isEmpty(planttype)){
                     registerProgress.setTitle("Kaydediliyor...");
@@ -63,14 +59,14 @@ public class AddActivity extends AppCompatActivity {
         });
     }
 
-    private void register_plant(String plantname, String plantage, String planttype) {
+    private void register_plant(String plantname, String plantage, String plantwaterday) {
 
         String user_id=mAuth.getCurrentUser().getUid();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("UserPlants").child(user_id);
         HashMap<String,String> userMap=new HashMap<>();
         userMap.put("plantname",plantname);
         userMap.put("plantage",plantage);
-        userMap.put("planttype",planttype);
+        userMap.put("plantwaterday",plantwaterday);
         mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
