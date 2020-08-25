@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mail;
     private EditText password;
     private Button enter;
-    private TextView newaccount;
+    private Button newaccount;
     private ProgressDialog registerProgress;
     private FirebaseAuth mAuth;
     private FirebaseUser firebaseUSer=null;
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         mail=(EditText) findViewById(R.id.login_email);
         password=(EditText) findViewById(R.id.login_password);
         enter=(Button) findViewById(R.id.login_button);
-        newaccount=(TextView) findViewById(R.id.login_need_account);
+        newaccount=(Button) findViewById(R.id.login_need_account);
         registerProgress=new ProgressDialog(this);
         mAuth= FirebaseAuth.getInstance();
         firebaseUSer=mAuth.getCurrentUser();

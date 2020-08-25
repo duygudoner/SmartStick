@@ -1,32 +1,24 @@
 package com.example.smartstickapp3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // MyCurrentPlantActivity' de yer alacak olan recyclerview için class tanımlaması yapıyoruz.
 public class SensorItem {
 
     String bitkiVeriTur, s_bar_current;
-    int s_bar_min, s_bar_max,s_bar_optimum;
+    int progressbar, s_bar_min, s_bar_max,s_bar_optimum;
 
     public SensorItem(){
 
     }
 
-    public SensorItem(String bitkiVeriTur, String s_bar_current, int s_bar_min, int s_bar_max, int s_bar_optimum) {
+    public SensorItem(String bitkiVeriTur, String s_bar_current, int progressbar, int s_bar_min, int s_bar_max, int s_bar_optimum) {
         this.bitkiVeriTur = bitkiVeriTur;
         this.s_bar_current = s_bar_current;
+        this.progressbar = progressbar;
         this.s_bar_min = s_bar_min;
         this.s_bar_max = s_bar_max;
-        this.s_bar_optimum = s_bar_optimum;
-    }
-
-    public String getS_bar_current() { return s_bar_current; }
-
-    public void setS_bar_current(String s_bar_current) { this.s_bar_current = s_bar_current; }
-
-    public int getS_bar_optimum() {
-        return s_bar_optimum;
-    }
-
-    public void setS_bar_optimum(int s_bar_optimum) {
         this.s_bar_optimum = s_bar_optimum;
     }
 
@@ -37,6 +29,18 @@ public class SensorItem {
     public void setBitkiVeriTur(String bitkiVeriTur) {
         this.bitkiVeriTur = bitkiVeriTur;
     }
+
+    public String  getS_bar_current() {
+        return s_bar_current;
+    }
+
+    public void setS_bar_current(String s_bar_current) {
+        this.s_bar_current = s_bar_current;
+    }
+
+    public int getProgressbar() { return progressbar; }
+
+    public void setProgressbar(int progressbar) { this.progressbar = progressbar; }
 
     public int getS_bar_min() {
         return s_bar_min;
@@ -54,11 +58,19 @@ public class SensorItem {
         this.s_bar_max = s_bar_max;
     }
 
+    public int getS_bar_optimum() {
+        return s_bar_optimum;
+    }
+
+    public void setS_bar_optimum(int s_bar_optimum) {
+        this.s_bar_optimum = s_bar_optimum;
+    }
+
     // Recyclerview'daki verileri doldurmak için bir metod oluşturuyoruz.
     // public static method sayesınde classtan nesne oluşturmadan çağırıyoruz.
     // Class tipinde (SensorItem) Arraylist oluşturuyoruz.
 
-    /*public static List<SensorItem> getData(){
+    public static List<SensorItem> getData(){
         ArrayList<SensorItem> dataList = new ArrayList<SensorItem>();
 
         int [] degerler  = {0,1000};
@@ -98,7 +110,7 @@ public class SensorItem {
         gecici.setS_bar_max(degerler[1]);
 
         gecici.setS_bar_current(currentValue);
-        gecici.setS_bar_optimum(optimumValue);
+        gecici.setS_bar_optimum(optimumValue);*/
 
         dataList.add(ortamNemi);
         dataList.add(isikSiddeti);
@@ -106,5 +118,5 @@ public class SensorItem {
         dataList.add(toprakNemi);
 
         return dataList;
-    }*/
+    }
 }
